@@ -50,7 +50,7 @@ Time spent: **{{time_spent}}** hours spent in total
   * [X] API must be able to create a category.
   * [X] API must be able to update a category.
   * [X] API must be able to delete a category.
-  * [ ] when delete categories all book belongs to that categories should deleted too.
+  * [x] when delete categories all book belongs to that categories should deleted too.
   
 * [x] Validate category is correct before (Create/Update):
   * [x] validate name of category is not empty and length > 5 characters.
@@ -74,8 +74,8 @@ Time spent: **{{time_spent}}** hours spent in total
   * [x] validate name of a book is not empty and length > 5 characters. if not reject it with error message
   * [x] validate description of a book is not empty and length > 5 characters. if not reject it with error message
   
-* [ ] API must be able to make action: user lend a book:
-  * [ ] API should have the following fields:
+* [x] API must be able to make action: user lend a book:
+  * [x] API should have the following fields:
     * id (uuid)
     * book_id (uuid)
     * user_id (uuid)
