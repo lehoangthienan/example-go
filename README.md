@@ -52,9 +52,9 @@ Time spent: **{{time_spent}}** hours spent in total
   * [X] API must be able to delete a category.
   * [x] when delete categories all book belongs to that categories should deleted too.
   
-* [x] Validate category is correct before (Create/Update):
-  * [x] validate name of category is not empty and length > 5 characters.
-  * [x] validate name of category not existed yet (for both create and update).
+* [X] Validate category is correct before (Create/Update):
+  * [X] validate name of category is not empty and length > 5 characters.
+  * [X] validate name of category not existed yet (for both create and update).
 
 * [x] API must be able to CRUD books:
   * [x] Each book should have the following fields:
@@ -75,15 +75,15 @@ Time spent: **{{time_spent}}** hours spent in total
   * [x] validate description of a book is not empty and length > 5 characters. if not reject it with error message
   
 * [x] API must be able to make action: user lend a book:
-  * [x] API should have the following fields:
+  * [X] API should have the following fields:
     * id (uuid)
     * book_id (uuid)
     * user_id (uuid)
     * from (datetime)
     * to (datetime)
-  * [ ] validate book_id of a book is exist, if not reject it with error message
-  * [ ] validate user_id of a user is exist, if not reject it with error message
-  * [ ] validate books is available to lend, if not available reject with error message
+  * [x] validate book_id of a book is exist, if not reject it with error message
+  * [x] validate user_id of a user is exist, if not reject it with error message
+  * [x] validate books is available to lend, if not available reject with error message
   
   
 #### Stage 2:
