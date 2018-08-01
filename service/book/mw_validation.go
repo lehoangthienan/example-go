@@ -28,6 +28,15 @@ func (mw validationMiddleware) Create(ctx context.Context, book *domain.Book) (e
 	if book.Name == "" {
 		return ErrNameIsRequired
 	}
+	if len(book.Name) <= 5 {
+		return ErrLenghtName
+	}
+	if book.Description == "" {
+		return ErrIsDescription
+	}
+	if len(book.Description) <= 5 {
+		return ErrLenghtDescription
+	}
 	return mw.Service.Create(ctx, book)
 }
 func (mw validationMiddleware) FindAll(ctx context.Context) ([]domain.Book, error) {
