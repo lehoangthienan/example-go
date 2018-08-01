@@ -22,7 +22,14 @@ func NewPGService(db *gorm.DB) Service {
 
 // Create implement Create for Detailub service
 func (s *pgService) Create(_ context.Context, p *domain.Detailub) error {
-	return s.db.Create(p).Error
+	find := domain.Detailub{}
+	if err := s.db.Find(&find, "book_id =?", p.Book_id).Error; err != nil {
+		if err == gorm.ErrRecordNotFound {
+			return s.db.Create(p).Error
+		}
+		return err
+	}
+	return ErrBookHanded
 }
 
 // Update implement Update for Detailub service
