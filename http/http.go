@@ -15,6 +15,8 @@ import (
 	categoryDecode "github.com/lehoangthienan/example-go/http/decode/json/category"
 
 	bookDecode "github.com/lehoangthienan/example-go/http/decode/json/book"
+
+	detailubDecode "github.com/lehoangthienan/example-go/http/decode/json/detailub"
 )
 
 // NewHTTPHandler ...
@@ -140,6 +142,39 @@ func NewHTTPHandler(endpoints endpoints.Endpoints,
 		r.Delete("/{book_id}", httptransport.NewServer(
 			endpoints.DeleteBook,
 			bookDecode.DeleteRequest,
+			encodeResponse,
+			options...,
+		).ServeHTTP)
+	})
+
+	r.Route("/detailubs", func(r chi.Router) {
+		r.Get("/", httptransport.NewServer(
+			endpoints.FindAllDetailub,
+			detailubDecode.FindAllRequest,
+			encodeResponse,
+			options...,
+		).ServeHTTP)
+		r.Get("/{detailub_id}", httptransport.NewServer(
+			endpoints.FindDetailub,
+			detailubDecode.FindRequest,
+			encodeResponse,
+			options...,
+		).ServeHTTP)
+		r.Post("/", httptransport.NewServer(
+			endpoints.CreateDetailub,
+			detailubDecode.CreateRequest,
+			encodeResponse,
+			options...,
+		).ServeHTTP)
+		r.Put("/{detailub_id}", httptransport.NewServer(
+			endpoints.UpdateDetailub,
+			detailubDecode.UpdateRequest,
+			encodeResponse,
+			options...,
+		).ServeHTTP)
+		r.Delete("/{detailub_id}", httptransport.NewServer(
+			endpoints.DeleteDetailub,
+			detailubDecode.DeleteRequest,
 			encodeResponse,
 			options...,
 		).ServeHTTP)
