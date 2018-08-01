@@ -11,6 +11,8 @@ import (
 
 	"github.com/lehoangthienan/example-go/endpoints"
 	userDecode "github.com/lehoangthienan/example-go/http/decode/json/user"
+
+	categoryDecode "github.com/lehoangthienan/example-go/http/decode/json/category"
 )
 
 // NewHTTPHandler ...
@@ -70,6 +72,39 @@ func NewHTTPHandler(endpoints endpoints.Endpoints,
 		r.Delete("/{user_id}", httptransport.NewServer(
 			endpoints.DeleteUser,
 			userDecode.DeleteRequest,
+			encodeResponse,
+			options...,
+		).ServeHTTP)
+	})
+
+	r.Route("/categories", func(r chi.Router) {
+		r.Get("/", httptransport.NewServer(
+			endpoints.FindAllCategory,
+			categoryDecode.FindAllRequest,
+			encodeResponse,
+			options...,
+		).ServeHTTP)
+		r.Get("/{category_id}", httptransport.NewServer(
+			endpoints.FindCategory,
+			categoryDecode.FindRequest,
+			encodeResponse,
+			options...,
+		).ServeHTTP)
+		r.Post("/", httptransport.NewServer(
+			endpoints.CreateCategory,
+			categoryDecode.CreateRequest,
+			encodeResponse,
+			options...,
+		).ServeHTTP)
+		r.Put("/{category_id}", httptransport.NewServer(
+			endpoints.UpdateCategory,
+			categoryDecode.UpdateRequest,
+			encodeResponse,
+			options...,
+		).ServeHTTP)
+		r.Delete("/{category_id}", httptransport.NewServer(
+			endpoints.DeleteCategory,
+			categoryDecode.DeleteRequest,
 			encodeResponse,
 			options...,
 		).ServeHTTP)
