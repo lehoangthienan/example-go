@@ -6,7 +6,6 @@ import (
 
 	"github.com/lehoangthienan/example-go/endpoints/book"
 	"github.com/lehoangthienan/example-go/endpoints/category"
-	"github.com/lehoangthienan/example-go/endpoints/detailub"
 	"github.com/lehoangthienan/example-go/endpoints/user"
 )
 
@@ -29,12 +28,6 @@ type Endpoints struct {
 	CreateBook  endpoint.Endpoint
 	UpdateBook  endpoint.Endpoint
 	DeleteBook  endpoint.Endpoint
-
-	FindDetailub    endpoint.Endpoint
-	FindAllDetailub endpoint.Endpoint
-	CreateDetailub  endpoint.Endpoint
-	UpdateDetailub  endpoint.Endpoint
-	DeleteDetailub  endpoint.Endpoint
 }
 
 // MakeServerEndpoints returns an Endpoints struct
@@ -57,11 +50,5 @@ func MakeServerEndpoints(s service.Service) Endpoints {
 		CreateBook:  book.MakeCreateEndpoint(s),
 		UpdateBook:  book.MakeUpdateEndpoint(s),
 		DeleteBook:  book.MakeDeleteEndpoint(s),
-
-		FindDetailub:    detailub.MakeFindEndPoint(s),
-		FindAllDetailub: detailub.MakeFindAllEndpoint(s),
-		CreateDetailub:  detailub.MakeCreateEndpoint(s),
-		UpdateDetailub:  detailub.MakeUpdateEndpoint(s),
-		DeleteDetailub:  detailub.MakeDeleteEndpoint(s),
 	}
 }

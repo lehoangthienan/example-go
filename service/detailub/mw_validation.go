@@ -25,6 +25,12 @@ func ValidationMiddleware() func(Service) Service {
 }
 
 func (mw validationMiddleware) Create(ctx context.Context, detailub *domain.Detailub) (err error) {
+	if detailub.Book_id.IsZero() {
+		return ErrEmptyIdBook
+	}
+	if detailub.User_id.IsZero() {
+		return ErrEmptyIdUser
+	}
 	return mw.Service.Create(ctx, detailub)
 }
 func (mw validationMiddleware) FindAll(ctx context.Context) ([]domain.Detailub, error) {
